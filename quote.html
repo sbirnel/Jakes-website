@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get a Quote | Next Level Home Detailing</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .quote-result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e7f3ff;
+            border-left: 5px solid var(--primary-blue);
+            display: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">NEXT <span>LEVEL</span> HOME DETAILING</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="quote.html">Get a Quote</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container" style="max-width: 800px;">
+            <div class="card">
+                <p style="color: #d9534f; font-weight: bold; margin-bottom: 20px;">
+                    Disclaimer: This is an estimate. In order to receive an accurate quote, a representative will need to assess your house in person.
+                </p>
+                
+                <h3>Estimate Your Quote</h3>
+                <form id="quoteForm">
+                    <label for="zipCode">Your Zip Code</label>
+                    <input type="number" id="zipCode" placeholder="Enter your Zip Code" required>
+
+                    <label for="largeWindows">Number of Large Windows</label>
+                    <input type="number" id="largeWindows" min="0" value="0" required>
+
+                    <label for="standardWindows">Number of Standard Windows</label>
+                    <input type="number" id="standardWindows" min="0" value="0" required>
+
+                    <label for="smallWindows">Number of Small Windows</label>
+                    <input type="number" id="smallWindows" min="0" value="0" required>
+
+                    <button type="button" class="btn" onclick="calculateQuote()">Calculate</button>
+                </form>
+
+                <div id="quoteOutput" class="quote-result"></div>
+                
+                <p id="contactLink" style="margin-top: 20px; display: none;">
+                    Ready to proceed? <a href="contact.html">Contact us here</a> to schedule your service!
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function calculateQuote() {
+            const zip = document.getElementById('zipCode').value;
+            const large = parseInt(document.getElementById('largeWindows').value) || 0;
+            const standard = parseInt(document.getElementById('standardWindows').value) || 0;
+            const small = parseInt(document.getElementById('smallWindows').value) || 0;
+
+            if (!zip || document.getElementById('largeWindows').value === "" || 
+                document.getElementById('standardWindows').value === "" || 
+                document.getElementById('smallWindows').value === "") {
+                alert("Please fill in all boxes to calculate your quote.");
+                return;
+            }
+
+            // Logic: 
+            // 1. Distance from 80126. 
+            // Since we can't do real-time distance API easily in a static file without a key, 
+            // we will simulate the distance logic. For a real site, you'd use a distance matrix API.
+            // Here, we'll use a simplified version: if zip is 80126, distance is 0. 
+            // Otherwise, we calculate a pseudo-distance based on the numerical difference (just for the demo).
+            // NOTE: In a production environment, you would integrate a Google Maps API.
+            
+            let baseZip = 80126;
+            let miles = Math.abs(parseInt(zip) - baseZip); 
+            // This is a simplified proxy for distance for demonstration purposes.
+            // Let's cap it at a reasonable number for the sake of the formula if it's way off.
+            if (miles > 50) miles = 25; // Example fallback for far away zips
+
+            let distanceCost = miles * 2;
+            let windowsCost = (large * 14) + (standard * 7) + (small * 7);
+            let total = distanceCost + windowsCost;
+
+            const output = document.getElementById('quoteOutput');
+            output.innerHTML = "Your Quote: $" + total;
+            output.style.display = "block";
+            document.getElementById('contactLink').style.display = "block";
+        }
+    </script>
+
+    <footer>
+        <p>&copy; 2026 Next Level Home Detailing LLC</p>
+        <div class="footer-links">
+            <span>Instagram: <a href="https://instagram.com/nextlevelhomedetailing" target="_blank">@nextlevelhomedetailing</a></span>
+            <span>Email: <a href="mailto:nextlevelhomedetailingco@gmail.com">nextlevelhomedetailingco@gmail.com</a></span>
+            <span>Phone: <a href="tel:7202545692">720-254-5692</a></span>
+        </div>
+    </footer>
+</body>
+</html>

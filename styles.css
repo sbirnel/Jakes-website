@@ -1,0 +1,154 @@
+/* 
+   Next Level Home Detailing Branding
+   Colors based on business card:
+   - Primary Blue: #00A3E0 (Approximate bright blue)
+   - Dark Gray/Black: #1A1A1A
+   - White: #FFFFFF
+   Fonts: Clean sans-serif (e.g., Montserrat or Arial)
+*/
+
+:root {
+    --primary-blue: #00A3E0;
+    --dark-bg: #1A1A1A;
+    --light-bg: #F9F9F9;
+    --text-color: #333333;
+    --white: #FFFFFF;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-bg);
+}
+
+header {
+    background-color: var(--white);
+    border-bottom: 4px solid var(--primary-blue);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--dark-bg);
+}
+
+.logo span {
+    color: var(--primary-blue);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--dark-bg);
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--primary-blue);
+}
+
+main {
+    padding: 2rem 5%;
+    min-height: 80vh;
+}
+
+footer {
+    background-color: var(--dark-bg);
+    color: var(--white);
+    padding: 2rem 5%;
+    text-align: center;
+}
+
+footer a {
+    color: var(--primary-blue);
+    text-decoration: none;
+}
+
+.footer-links {
+    margin-top: 1rem;
+}
+
+.footer-links span {
+    margin: 0 10px;
+}
+
+/* Page Specific Components */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+}
+
+.col {
+    flex: 1;
+    min-width: 300px;
+}
+
+img, video {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.btn:hover {
+    background-color: #0082b3;
+}
+
+/* Form Styles */
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}

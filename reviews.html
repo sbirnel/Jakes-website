@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews | Next Level Home Detailing</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .star-rating {
+            color: #FFD700;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        .review-item {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+        .review-item:last-child {
+            border-bottom: none;
+        }
+        .stars-input {
+            display: flex;
+            gap: 5px;
+            margin: 10px 0;
+        }
+        .stars-input select {
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">NEXT <span>LEVEL</span> HOME DETAILING</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="quote.html">Get a Quote</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1 style="margin-bottom: 20px;">Customer Reviews</h1>
+            
+            <div class="row">
+                <div class="col">
+                    <div class="card" id="reviewsList">
+                        <h3>What Our Clients Say</h3>
+                        <div class="review-item">
+                            <div class="star-rating">★★★★★</div>
+                            <p>"I did not realize how big of a difference this would make until I trusted Next Level! My house has never felt so clean! I love it and Jake's team did an amazing job!"</p>
+                            <p style="margin-top: 10px; font-style: italic; color: #666;">- Happy Customer</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="card">
+                        <h3>Leave a Review</h3>
+                        <form id="reviewForm">
+                            <label for="reviewerName">Your Name</label>
+                            <input type="text" id="reviewerName" placeholder="Enter your name" required>
+
+                            <label for="rating">Star Rating</label>
+                            <select id="rating" required>
+                                <option value="5">5 Stars</option>
+                                <option value="4">4 Stars</option>
+                                <option value="3">3 Stars</option>
+                                <option value="2">2 Stars</option>
+                                <option value="1">1 Star</option>
+                            </select>
+
+                            <label for="reviewText">Your Review</label>
+                            <textarea id="reviewText" rows="4" placeholder="Write your review here..." required></textarea>
+
+                            <button type="submit" class="btn">Submit Review</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('reviewForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('reviewerName').value;
+            const rating = document.getElementById('rating').value;
+            const text = document.getElementById('reviewText').value;
+            
+            const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+            
+            const newReview = document.createElement('div');
+            newReview.className = 'review-item';
+            newReview.innerHTML = `
+                <div class="star-rating">${stars}</div>
+                <p>"${text}"</p>
+                <p style="margin-top: 10px; font-style: italic; color: #666;">- ${name}</p>
+            `;
+            
+            document.getElementById('reviewsList').appendChild(newReview);
+            
+            // Reset form
+            this.reset();
+            alert("Thank you for your review!");
+        });
+    </script>
+
+    <footer>
+        <p>&copy; 2026 Next Level Home Detailing LLC</p>
+        <div class="footer-links">
+            <span>Instagram: <a href="https://instagram.com/nextlevelhomedetailing" target="_blank">@nextlevelhomedetailing</a></span>
+            <span>Email: <a href="mailto:nextlevelhomedetailingco@gmail.com">nextlevelhomedetailingco@gmail.com</a></span>
+            <span>Phone: <a href="tel:7202545692">720-254-5692</a></span>
+        </div>
+    </footer>
+</body>
+</html>
